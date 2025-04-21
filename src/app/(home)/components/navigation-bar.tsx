@@ -31,7 +31,7 @@ export default function NavigationBar() {
     <Navbar className="shadow">
       <NavbarBrand>
         <AcmeLogo />
-        <p className="font-bold text-inherit">ACME</p>
+        <p className="font-bold text-inherit">CarsJa</p>
       </NavbarBrand>
 
       <NavbarContent justify="end">

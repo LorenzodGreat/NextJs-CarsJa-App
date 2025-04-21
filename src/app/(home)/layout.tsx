@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NavigationBar from "./components/navigation-bar";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "CarsJa",
@@ -16,6 +17,7 @@ export default function RootLayout({
     <>
     <NavigationBar/>
       {children}
+      <SiteFooter/>
     </>
   );
 }
