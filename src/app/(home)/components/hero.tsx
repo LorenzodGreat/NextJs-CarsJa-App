@@ -1,9 +1,9 @@
-// import { Suspense } from "react"
+import { Suspense } from "react"
 
 
-// import { SearchPanelWrapper } from "@/components/search-panel-wrapper"
-// import { SearchPanelSkeleton } from "@/components/skeletons/search-panel"
 import { LogoSlider } from './logo-slider';
+import { SearchPanelSkeleton } from "@/components/skeletons/search-panel";
+import { SearchPanelWrapper } from "@/components/search-panel-wrapper";
 
 export async function Hero() {
   return (
@@ -17,9 +17,9 @@ export async function Hero() {
             <div className="pt-10">
               <div className="flex items-center justify-center">
                 <div className="w-[860px]">
-                  {/* <Suspense fallback={<SearchPanelSkeleton />}>
+                  <Suspense fallback={<SearchPanelSkeleton />}>
                     <SearchPanelWrapper />
-                  </Suspense> */}
+                    </Suspense>  
                 </div>
               </div>
             </div>

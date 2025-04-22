@@ -9,21 +9,21 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <div className="py-6 lg:py-10">
+        <BrowseCarTypes />
+      </div>
       <div className="border-y border-neutral-900/5">
-        <div className="py-12 md:py-16">
+        <div className="py-6 lg:py-10">
           <Features />
         </div>
       </div>
-      <div className="pt-12 lg:pt-14">
-        <BrowseCarTypes />
-      </div>
-      <div className="pt-12 lg:pt-14">
-        <Testimonials />
-      </div>
-      <div className="py-12 lg:py-16">
+      <div className="py-6 lg:py-10">
         <PopularDestinations />
       </div>
-      <div className="pb-12 pt-24 sm:pb-20 sm:pt-36">
+      <div className="py-6 lg:py-10">
+        <Testimonials />
+      </div>
+      <div className="pb-10 pt-12 sm:pb-10 sm:pt-18">
         <CallToAction />
       </div>
     </main>

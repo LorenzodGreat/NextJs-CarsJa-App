@@ -1,16 +1,21 @@
-"use client"
-import Image from "next/image"
-import Link from "next/link"
-import { locationsWithImages } from "@/data/locations-and-images"
-
-import { SearchParams } from "@/lib/types"
-import { formatAmountForDisplay } from "@/lib/utils"
-import { Button } from "@heroui/react"
+"use client";
+// import Link from "next/link";
+// import { SearchParams } from "@/lib/types";
+import { formatAmountForDisplay } from "@/lib/utils";
+import {
+  Card,
+  // CardHeader,
+  CardBody,
+  Image,
+  CardFooter,
+  // Button,
+} from "@heroui/react";
+import { locationsWithImages } from "@/data/locations-and-images";
 
 export function PopularDestinations() {
   const featuredLocations = locationsWithImages.filter(
     (location) => location.featured === true
-  )
+  );
 
   return (
     <section>
@@ -19,29 +24,23 @@ export function PopularDestinations() {
           Where to Rent Next
         </h2>
         <div className="pt-6">
-          <div className="group grid grid-cols-2 gap-x-5 gap-y-7 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-8 md:grid-cols-5 [&_a:hover_~_*_img]:!opacity-100">
+          <div className="gap-2 grid grid-cols-2 sm:grid-cols-5">
             {featuredLocations.map(
               (
                 {
                   id,
-                  slug,
+                  // slug,
                   imageUrl,
-                  latitude,
-                  longitude,
+                  // latitude,
+                  // longitude,
                   name,
                   startingPrice,
                 },
-                index
+                // index
               ) => (
-                <article
-                  key={id}
-                  className={`relative ${index === featuredLocations.length - 1 ? "md:hidden" : ""}`}
-                >
-                  <Button
-                    variant={"light"}
-                    className="m-0 flex size-full p-0"
-                  >
-                    <Link
+                <Card shadow="sm" key={id} isPressable>
+                  <CardBody className="overflow-visible p-0">
+                    {/* <Link
                       href={{
                         pathname: "/cars",
                         query: {
@@ -50,36 +49,39 @@ export function PopularDestinations() {
                           [SearchParams.LNG]: longitude,
                         },
                       }}
-                      className="absolute left-0 top-0 z-10 size-full"
-                    />
-                  </Button>
-                  <div className="relative aspect-square">
+                      className="absolute inset-0 z-10"
+                    >
+                      <p className="text-tiny text-white/60 uppercase font-bold">
+                        Go to
+                      </p>
+                      <h4 className="text-black font-medium text-2xl">
+                        {name}
+                      </h4>
+                    </Link> */}
                     <Image
-                      src={imageUrl}
+                      src={
+                        typeof imageUrl === "string" ? imageUrl : imageUrl.src
+                      }
                       alt={name}
-                      quality={85}
-                      priority
-                      fill
-                      sizes="(max-width: 550px) 50vw, (max-width: 950px) 33.33vw, 20vw"
-                      className="rounded-xl object-cover transition-opacity group-hover:opacity-70"
-                      placeholder="blur"
+                      className="w-full object-cover h-[140px]"
+                      radius="lg"
+                      shadow="sm"
+                      width="100%"
                     />
-                  </div>
-                  <div className="pt-3 sm:pt-3.5">
-                    <h3 className="truncate text-[13px] font-semibold leading-[22px] text-neutral-950 sm:text-[14px] xl:text-[15px]">
-                      {name}
-                    </h3>
-                    <p className="truncate text-[13px] leading-[21px] text-neutral-600 sm:text-[14px] sm:leading-[26px]">
+                  </CardBody>
+                  <CardFooter className="text-small justify-between">
+                    <b>{name}</b>
+                    <p className="text-default-500">
                       Cars from{" "}
                       {formatAmountForDisplay(startingPrice, "usd", true)}+
                     </p>
-                  </div>
-                </article>
+                  </CardFooter>
+                </Card>
               )
             )}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

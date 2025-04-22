@@ -6,7 +6,7 @@ export const locations = [
     latitude: 17.9712,
     longitude: -76.7936,
     imageUrl: "",
-    featured: false,
+    featured: true,
     startingPrice: 50,
   },
   {
@@ -16,7 +16,7 @@ export const locations = [
     latitude: 18.4712,
     longitude: -77.9188,
     imageUrl: "",
-    featured: false,
+    featured: true,
     startingPrice: 55,
   },
   {
@@ -26,7 +26,7 @@ export const locations = [
     latitude: 18.2734,
     longitude: -77.4291,
     imageUrl: "",
-    featured: false,
+    featured: true,
     startingPrice: 45,
   },
   {
@@ -36,7 +36,7 @@ export const locations = [
     latitude: 17.8872,
     longitude: -77.6334,
     imageUrl: "",
-    featured: false,
+    featured: true,
     startingPrice: 48,
   },
   {
@@ -46,7 +46,7 @@ export const locations = [
     latitude: 17.9266,
     longitude: -76.2056,
     imageUrl: "",
-    featured: false,
+    featured: true,
     startingPrice: 46,
   }
 ]

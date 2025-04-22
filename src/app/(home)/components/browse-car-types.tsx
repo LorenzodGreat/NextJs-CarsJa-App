@@ -66,7 +66,7 @@ export function BrowseCarTypes() {
                     pageIndex * itemsPerPage + itemsPerPage
                   )
                   .map((item) => (
-                    <Card key={item.id} className={itemsPerPage === 5 ? "w-1/5" : "w-full"}>
+                    <Card key={item.id} className={itemsPerPage === 5 ? "w-1/5 hover:scale-90 hover:transition-all hover:duration-400 duration-700  " : "w-full hover:scale-90 hover:transition-all hover:duration-400 duration-700 "}>
                       <CardHeader className="absolute z-50 top-1 flex-col !items-start">
                         <Chip
                           variant="solid"

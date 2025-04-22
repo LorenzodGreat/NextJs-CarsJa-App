@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx"
+import { ReadonlyURLSearchParams } from "next/navigation"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -25,4 +26,13 @@ export const formatAmountForDisplay = (
     maximumFractionDigits: removeCents ? 0 : 2,
   })
   return numberFormat.format(amount)
+}
+
+
+export const constructUrlWithParams = (
+  pathname: string,
+  params: URLSearchParams | ReadonlyURLSearchParams
+): string => {
+  const queryString = params.toString()
+  return queryString ? `${pathname}?${queryString}` : pathname
 }
