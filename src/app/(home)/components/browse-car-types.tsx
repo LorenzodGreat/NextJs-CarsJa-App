@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Button, Card, Image, CardHeader, Chip } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { carTypes } from "@/data/car-types";
+import Link from "next/link";
+import { SearchParams } from "@/lib/types";
 
 export function BrowseCarTypes() {
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -47,7 +49,7 @@ export function BrowseCarTypes() {
   return (
     <div className="flex items-center justify-center p-8">
       <div className="relative w-full max-w-[90vw]">
-      <h2 className="text-balance text-[19px] font-bold sm:text-[21px] lg:text-[23px]">
+        <h2 className="text-balance text-[19px] font-bold sm:text-[21px] lg:text-[23px]">
           Pick Your Perfect Match
         </h2>
         <div className="overflow-hidden pt-6">
@@ -66,23 +68,40 @@ export function BrowseCarTypes() {
                     pageIndex * itemsPerPage + itemsPerPage
                   )
                   .map((item) => (
-                    <Card key={item.id} className={itemsPerPage === 5 ? "w-1/5 hover:scale-90 hover:transition-all hover:duration-400 duration-700  " : "w-full hover:scale-90 hover:transition-all hover:duration-400 duration-700 "}>
-                      <CardHeader className="absolute z-50 top-1 flex-col !items-start">
-                        <Chip
-                          variant="solid"
-                          color="primary"
-                          className="text-tiny uppercase font-bold"
-                        >
-                          {item.name}
-                        </Chip>
-                      </CardHeader>
-                      <Image
-                        removeWrapper
-                        src={item.imageUrl.src}
-                        alt={item.name}
-                        className="h-[200px] w-full object-cover"
-                      />
-                    </Card>
+                      <Card key={item.id}
+                        className={
+                          itemsPerPage === 5
+                            ? "w-1/5 hover:scale-90 hover:transition-all hover:duration-400 duration-700 relative"
+                            : "w-full hover:scale-90 hover:transition-all hover:duration-400 duration-700 relative"
+                        }
+                      >
+                        
+                        <Link
+                          href={{
+                            pathname: "/cars",
+                            query: {
+                              [SearchParams.BODY_STYLE]: item.slug,
+                            },
+                          }}
+                          className="absolute inset-0 z-20 size-full rounded-xl"
+                        />
+                   
+                        <CardHeader className="absolute z-50 top-1 flex-col !items-start">
+                          <Chip
+                            variant="solid"
+                            color="primary"
+                            className="text-tiny uppercase font-bold"
+                          >
+                            {item.name}
+                          </Chip>
+                        </CardHeader>
+                        <Image
+                          removeWrapper
+                          src={item.imageUrl.src}
+                          alt={item.name}
+                          className="h-[200px] w-full object-cover"
+                        />
+                      </Card>
                   ))}
               </div>
             ))}
